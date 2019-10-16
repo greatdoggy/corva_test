@@ -1,22 +1,16 @@
 require './lib/errors'
 require './lib/validators'
+require './lib/array_helpers'
 
 include Errors
 include Validators
+include ArrayHelpers
 
-FIRST_PART_TITLE = "Part1"
+FIRST_PART_TITLE  = "Part1"
 SECOND_PART_TITLE = "Part2"
-RESULT_TITLE = "Result"
+RESPONSE_TITLE      = "Result"
 
 not_found { status_404 }
-
-def extract_array(data, title)
-  [1,2,3]
-end
-
-def subtract_balues(a, b)
-  [3,2,1]
-end
 
 def computed_response
   arr1 = extract_array(@post_data["data"], FIRST_PART_TITLE)
