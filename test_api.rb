@@ -1,6 +1,3 @@
-require 'sinatra'
-require 'json'
-require 'rubygems'
 
 ATTRIBUTES = %w(timestamp data)
 FIRST_PART_TITLE = "Part1"
