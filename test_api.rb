@@ -8,6 +8,8 @@ FIRST_PART_TITLE = "Part1"
 SECOND_PART_TITLE = "Part2"
 RESULT_TITLE = "Result"
 
+not_found { status_404 }
+
 def extract_array(data, title)
   [1,2,3]
 end
@@ -27,10 +29,6 @@ def computed_response
     "timestamp" => @post_data["timestamp"],
     "result": { "title": RESPONSE_TITLE, "values": result_array },
   }.to_json
-end
-
-def status_400
-  "bad data"
 end
 
 #POST /compute/:request_id
