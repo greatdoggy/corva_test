@@ -2,12 +2,28 @@ require 'sinatra'
 require 'json'
 require 'rubygems'
 
+ATTRIBUTES = %w(timestamp data)
 FIRST_PART_TITLE = "Part1"
 SECOND_PART_TITLE = "Part2"
 RESULT_TITLE = "Result"
 
 def valid_attributes
-  true
+      # check basic correctnes of input hash
+    ATTRIBUTES.each { |attr| return false unless @post_data.keys.include? attr }
+    # check "data" attribute to contain 2 elements, as stated in task description
+    data = @post_data["data"]
+    return false unless data.is_a?(Array) && data.size == INPUT_OBJECTS_COUNT
+    # check "data" array to contain valid data
+    data.each do |h|
+      next if valid_data_hash? h
+      return false
+    end
+    # input data is valid enough to process it
+    true
+end
+
+def valid_data_hash?(h)
+  h["values"]&.is_a?(Array) && [FIRST_PART_TITLE, SECOND_PART_TITLE].include?(h["title"])
 end
 
 def extract_array(data, title)
