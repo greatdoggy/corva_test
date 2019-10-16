@@ -1,3 +1,4 @@
+require 'sinatra'
 require './lib/errors'
 require './lib/validators'
 require './lib/array_helpers'
@@ -19,9 +20,9 @@ def computed_response
   result_array = subtract_values(arr1, arr2)
 
   {
-    "request_id" => @request_id,
-    "timestamp" => @post_data["timestamp"],
-    "result": { "title": RESPONSE_TITLE, "values": result_array },
+    request_id: @request_id,
+    timestamp: @post_data["timestamp"],
+    result: { title: RESPONSE_TITLE, values: result_array },
   }.to_json
 end
 
@@ -38,4 +39,3 @@ post "/compute/:request_id" do
     end
   end
 end
-
