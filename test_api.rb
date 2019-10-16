@@ -2,12 +2,33 @@ require 'sinatra'
 require 'json'
 require 'rubygems'
 
+FIRST_PART_TITLE = "Part1"
+SECOND_PART_TITLE = "Part2"
+RESULT_TITLE = "Result"
+
 def valid_attributes
   true
 end
 
+def extract_array(data, title)
+  [1,2,3]
+end
+
+def subtract_balues(a, b)
+  [3,2,1]
+end
+
 def computed_response
-  {foo: :bar}.to_json
+  arr1 = extract_array(@post_data["data"], FIRST_PART_TITLE)
+  arr2 = extract_array(@post_data["data"], SECOND_PART_TITLE)
+
+  result_array = subtract_values(arr1, arr2)
+
+  {
+    "request_id" => @request_id,
+    "timestamp" => @post_data["timestamp"],
+    "result": { "title": RESPONSE_TITLE, "values": result_array },
+  }.to_json
 end
 
 def status_400
