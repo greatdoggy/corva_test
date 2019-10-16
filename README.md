@@ -1,5 +1,5 @@
 # Simple Web Service
-My first idea was to use Rails Api Mode for this task, but it still looks like overkill for such simple task.
+My first idea was to use Rails Api Mode, but it still looks like overkill for such simple task.
 So I choose Sinatra as it is fast, simple and do the thing :)
 
 # Set up
